@@ -27,14 +27,18 @@ add_subdirectory(third_party/CMSIS)
 #add_subdirectory(third_party/CMSIS/DSP)
 
 add_subdirectory(third_party/FatFs)
-add_subdirectory(third_party/FreeRTOS)
+
+set(FREERTOS_PORT_GCC_ARM_CM3 ON)
+set(FREERTOS_CONFIG_FILE_DIRECTORY ${CMAKE_CURRENT_LIST_DIR} CACHE STRING "")
+add_subdirectory(third_party/FreeRTOS-Kernel)
+
 add_subdirectory(third_party/printf)
 
 add_subdirectory(utilities/fatfs_diskio)
 add_subdirectory(utilities/freertos_wrappers)
 add_subdirectory(utilities/syslog)
 
-add_executable(${CMAKE_PROJECT_NAME} main.cpp assert.c fault_handlers.c)
+add_executable(${CMAKE_PROJECT_NAME} main.cpp assert.c fault_handlers.c FreeRTOSHooks.c)
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
     cmsis

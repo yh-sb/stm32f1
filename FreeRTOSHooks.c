@@ -1,6 +1,6 @@
 #include <assert.h>
-#include "include/FreeRTOS.h"
-#include "include/task.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 void vApplicationIdleHook(void)
 {
