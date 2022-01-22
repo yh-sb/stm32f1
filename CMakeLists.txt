@@ -28,7 +28,7 @@ add_subdirectory(third_party/CMSIS)
 
 add_subdirectory(third_party/FatFs)
 
-set(FREERTOS_PORT_GCC_ARM_CM3 ON)
+set(FREERTOS_PORT GCC_ARM_CM3 CACHE STRING "")
 set(FREERTOS_CONFIG_FILE_DIRECTORY ${CMAKE_CURRENT_LIST_DIR} CACHE STRING "")
 add_subdirectory(third_party/FreeRTOS-Kernel)
 
@@ -46,7 +46,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
     drivers
     periph
     fatfs_diskio
-    freertos
+    freertos_kernel
     fatfs
     printf
     syslog

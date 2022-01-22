@@ -20,7 +20,7 @@ target_include_directories(periph
 
 target_link_libraries(periph
     PUBLIC
-        freertos
+        freertos_kernel
     PRIVATE
         cmsis
 )

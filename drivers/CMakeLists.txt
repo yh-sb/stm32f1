@@ -20,7 +20,7 @@ target_include_directories(drivers
 target_link_libraries(drivers
     PUBLIC
         periph
-        freertos
+        freertos_kernel
     PRIVATE
         printf
         freertos_wrappers
