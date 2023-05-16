@@ -798,11 +798,7 @@ void nrf24l01::exti_cb(periph::exti *exti, void *ctx)
     
     BaseType_t hi_task_woken = 0;
     vTaskNotifyGiveFromISR(task, &hi_task_woken);
-#ifdef __XTENSA__
-    portYIELD_FROM_ISR();
-#else
     portYIELD_FROM_ISR(hi_task_woken);
-#endif
 }
 
 void nrf24l01::tim_cb(periph::tim *tim, void *ctx)
@@ -811,9 +807,5 @@ void nrf24l01::tim_cb(periph::tim *tim, void *ctx)
     
     BaseType_t hi_task_woken = 0;
     vTaskNotifyGiveFromISR(task, &hi_task_woken);
-#ifdef __XTENSA__
-    portYIELD_FROM_ISR();
-#else
     portYIELD_FROM_ISR(hi_task_woken);
-#endif
 }

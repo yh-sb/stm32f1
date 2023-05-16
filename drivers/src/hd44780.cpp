@@ -292,11 +292,7 @@ void hd44780::tim_cb(tim *tim, void *ctx)
     
     BaseType_t hi_task_woken = 0;
     vTaskNotifyGiveFromISR(*_task, &hi_task_woken);
-#ifdef __XTENSA__
-    portYIELD_FROM_ISR();
-#else
     portYIELD_FROM_ISR(hi_task_woken);
-#endif
 }
 
 void hd44780::delay(uint32_t us)

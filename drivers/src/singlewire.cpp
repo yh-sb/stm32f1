@@ -190,11 +190,7 @@ void singlewire::fsm_run(bool is_tim_expired)
 Exit:
     BaseType_t hi_task_woken = 0;
     vTaskNotifyGiveFromISR(task, &hi_task_woken);
-#ifdef __XTENSA__
-    portYIELD_FROM_ISR();
-#else
     portYIELD_FROM_ISR(hi_task_woken);
-#endif
 }
 
 void singlewire::tim_cb(tim *tim, void *ctx)
