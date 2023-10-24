@@ -28,7 +28,8 @@ add_subdirectory(third_party/CMSIS)
 add_subdirectory(third_party/FatFs)
 
 set(FREERTOS_PORT GCC_ARM_CM3 CACHE STRING "")
-set(FREERTOS_CONFIG_FILE_DIRECTORY ${CMAKE_CURRENT_LIST_DIR} CACHE STRING "")
+add_library(freertos_config INTERFACE)
+target_include_directories(freertos_config SYSTEM INTERFACE .)
 add_subdirectory(third_party/FreeRTOS-Kernel)
 
 add_subdirectory(third_party/printf)
